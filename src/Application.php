@@ -356,6 +356,9 @@ class Application extends Container
         $this->singleton('cache.store', function () {
             return $this->loadComponent('cache', 'Illuminate\Cache\CacheServiceProvider', 'cache.store');
         });
+
+        // Database
+        $this->register('\Illuminate\Database\DatabaseServiceProvider');
     }
 
     /**
