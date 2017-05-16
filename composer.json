@@ -18,6 +18,7 @@
         "illuminate/console"  : "5.2.*",
         "illuminate/config"   : "5.2.*",
         "illuminate/container": "5.2.*",
+        "illuminate/events"   : "5.2.*",
         "bugotech/support"    : "1.0.*",
         "bugotech/io"         : "1.0.*"
     },
@@ -28,8 +29,7 @@
         },
 
         "files": [
-            "src/helpers.php",
-            "src/Console/helpers.php"
+            "src/helpers.php", "src/Console/helpers.php"
         ]
     },
 

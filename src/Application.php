@@ -332,6 +332,9 @@ class Application extends Container
             return new Logger('netforce', [$this->getMonologHandler()]);
         });
 
+        // Events
+        $this->register('\Illuminate\Events\EventServiceProvider');
+
         // Artisan - Console
         $this->singleton('artisan', function ($app) {
             $artisan = new Artisan($app, $app->make('events'), $app->version());
