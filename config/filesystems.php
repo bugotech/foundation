@@ -54,6 +54,17 @@ return [
             'visibility' => 'public',
         ],
 
+        'ftp' => [
+            'host' => '',
+            'username' => '',
+            'password' => '',
+            'port' => 21,
+            //'root' => null,
+            //'passive' => true,
+            //'ssl' => false,
+            //'timeout' => 3000,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',
