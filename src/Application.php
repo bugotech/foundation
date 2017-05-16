@@ -9,7 +9,7 @@ use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
 use Monolog\Formatter\LineFormatter;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Console\Application as Artisan;
+use Bugotech\Foundation\Console\Artisan;
 use Illuminate\Config\Repository as ConfigRepository;
 
 class Application extends Container
