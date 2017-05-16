@@ -10,7 +10,7 @@ class MaintenanceCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'maintenance {opt=off : Option on or off }';
+    protected $signature = 'maintenance {opt : Option on or off }';
 
     /**
      * The console command description.
