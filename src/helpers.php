@@ -1,6 +1,5 @@
 <?php
 
-use Bugotech\Support\Str;
 use Illuminate\Container\Container;
 
 if (! function_exists('app')) {
@@ -8,7 +7,7 @@ if (! function_exists('app')) {
      * Get the available container instance.
      *
      * @param  string  $make
-     * @return mixed|\NetForce\Framework\\Application
+     * @return mixed|\Bugotech\Foundation\Application
      */
     function app($make = null)
     {
@@ -24,64 +23,19 @@ if (! function_exists('env')) {
     /**
      * Gets the value of an environment variable. Supports boolean, empty and null.
      *
-     * @param  string  $key
-     * @param  mixed   $default
-     * @return mixed
+     * @param  string|null  $key
+     * @param  mixed|null $default
+     * @return mixed|\Bugotech\Foundation\Env
      */
-    function env($key, $default = null)
+    function env($key = null, $default = null)
     {
-        $value = getenv($key);
-
-        if ($value === false) {
-            return value($default);
+        if (is_null($key)) {
+            return new \Bugotech\Foundation\Env();
         }
 
-        switch (strtolower($value)) {
-            case 'true':
-            case '(true)':
-                return true;
-
-            case 'false':
-            case '(false)':
-                return false;
-
-            case 'empty':
-            case '(empty)':
-                return '';
-
-            case 'null':
-            case '(null)':
-                return null;
-        }
-
-        if (Str::startsWith($value, '"') && Str::endsWith($value, '"')) {
-            return substr($value, 1, -1);
-        }
-
-        return $value;
+        return \Bugotech\Foundation\Env::get($key, $default);
     }
 }
-
-if (! function_exists('env_file_load')) {
-    /**
-     * Load file .env.
-     * @param $path
-     * @param string $file
-     * @return bool
-     */
-    function env_file_load($path, $file = '.env')
-    {
-        try {
-            $env = new \Dotenv\Dotenv($path, $file);
-            $env->load();
-
-            return true;
-        } catch (\Dotenv\Exception\InvalidPathException $e) {
-            return false;
-        }
-    }
-}
-
 
 if (! function_exists('base_path')) {
     /**
@@ -93,5 +47,29 @@ if (! function_exists('base_path')) {
     function base_path($path = '')
     {
         return app()->basePath().($path ? '/'.$path : $path);
+    }
+}
+
+if (! function_exists('config')) {
+    /**
+     * Get / set the specified configuration value.
+     *
+     * If an array is passed as the key, we will assume you want to set an array of values.
+     *
+     * @param  array|string  $key
+     * @param  mixed  $default
+     * @return mixed
+     */
+    function config($key = null, $default = null)
+    {
+        if (is_null($key)) {
+            return app('config');
+        }
+
+        if (is_array($key)) {
+            return app('config')->set($key);
+        }
+
+        return app('config')->get($key, $default);
     }
 }

@@ -1,9 +1,12 @@
 <?php namespace Bugotech\Foundation;
 
+use Bugotech\IO\Filesystem;
+use Illuminate\Support\Composer;
 use RuntimeException;
 use Illuminate\Support\Str;
 use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Config\Repository as ConfigRepository;
 
 class Application extends Container
 {
@@ -72,7 +75,10 @@ class Application extends Container
         $this->instance('app', $this);
         $this->instance('Bugotech\Foundation\Application', $this);
 
+        $this->registerContainerBase();
         $this->registerContainerAliases();
+
+        $this->configure('app');
     }
 
     /**
@@ -297,6 +303,29 @@ class Application extends Container
     }
 
     /**
+     * Register the core conteiner base structures.
+     *
+     * @return void
+     */
+    protected function registerContainerBase()
+    {
+        // Files
+        $this->singleton('files', function () {
+            return new Filesystem();
+        });
+
+        // Composer
+        $this->singleton('composer', function ($app) {
+            return new Composer($app->make('files'), $this->basePath());
+        });
+
+        // Config
+        $this->singleton('config', function () {
+            return new ConfigRepository();
+        });
+    }
+
+    /**
      * Register the core container aliases.
      *
      * @return void
@@ -305,9 +334,9 @@ class Application extends Container
     {
         $this->aliases = [
             'Illuminate\Contracts\Foundation\Application' => 'app',
-            'Illuminate\Contracts\Config\Repository' => 'config',
-            'Illuminate\Container\Container' => 'app',
             'Illuminate\Contracts\Container\Container' => 'app',
+            'Illuminate\Container\Container' => 'app',
+            'Illuminate\Contracts\Config\Repository' => 'config',
             //'Illuminate\Database\ConnectionResolverInterface' => 'db',
             //'Illuminate\Database\DatabaseManager' => 'db',
             //'Illuminate\Contracts\Encryption\Encrypter' => 'encrypter',
