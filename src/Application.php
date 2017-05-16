@@ -249,13 +249,23 @@ class Application extends Container
      */
     public function path($type, $path = null)
     {
-        if (array_key_exists($type, $this->instances)) {
-            return $this->instances[$type];
+        $instance = sprintf('path.%s', $type);
+        $base = $this->basePath;
+
+        // Verificar se foi instanciado um path diferente
+        if (array_key_exists($instance, $this->instances)) {
+            $base = $this->instances[$instance];
         }
 
+        // Verificar se foi implementado em PATH_ no env
+        $key = sprintf('PATH_%s', strtoupper($type));
+        $base = env($key, $base);
+
+        // Tratar path
         $path = is_null($path) ? $type : $type . DIRECTORY_SEPARATOR . $path;
 
-        return $this->basePath($path);
+        // Retornar
+        return is_null($path) ? $base : $base . DIRECTORY_SEPARATOR . $path;
     }
 
     /**

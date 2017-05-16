@@ -25,7 +25,7 @@ if (! function_exists('env')) {
      *
      * @param  string|null  $key
      * @param  mixed|null $default
-     * @return mixed|\Bugotech\Foundation\Env
+     * @return mixed|string|\Bugotech\Foundation\Env
      */
     function env($key = null, $default = null)
     {
