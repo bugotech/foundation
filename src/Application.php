@@ -335,7 +335,7 @@ class Application extends Container
             return new ConfigRepository();
         });
 
-        // Files
+        // Files e Storage
         $this->loadComponent('filesystems', '\Bugotech\Foundation\IO\FilesystemServiceProvider', 'filesystem');
 
         // Log
