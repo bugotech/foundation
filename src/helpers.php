@@ -73,3 +73,21 @@ if (! function_exists('config')) {
         return app('config')->get($key, $default);
     }
 }
+
+if (! function_exists('logger')) {
+    /**
+     * Set new log or return Logger.
+     * @param null|string $error
+     * @return \Monolog\Logger|bool
+     */
+    function logger($error = null)
+    {
+        $log = app('log');
+
+        if (is_null($log)) {
+            return $log;
+        }
+
+        return $log->error($error);
+    }
+}

@@ -26,7 +26,7 @@ class Handler implements ExceptionHandler
         }
 
         try {
-            $logger = app('log');
+            $logger = logger();
         } catch (Exception $ex) {
             throw $e; // throw the original exception
         }
