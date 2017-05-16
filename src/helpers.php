@@ -116,7 +116,7 @@ if (! function_exists('logger')) {
     {
         $log = app('log');
 
-        if (is_null($log)) {
+        if (is_null($error)) {
             return $log;
         }
 
