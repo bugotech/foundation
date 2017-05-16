@@ -45,7 +45,7 @@ class MaintenanceCommand extends Command
     public function fire()
     {
         $opt = strtolower($this->argument('opt'));
-        $file = storage_path('/framework/.maintenance');
+        $file = storage_path('framework/.maintenance');
 
         // Verificar se diretorio existe
         $this->files->force($this->files->path($file));

@@ -91,7 +91,7 @@ class Application extends Container
      */
     public function isDownForMaintenance()
     {
-        return file_exists(storage_path('/framework/.maintenance'));
+        return file_exists(storage_path('framework/.maintenance'));
     }
 
     /**
@@ -262,7 +262,7 @@ class Application extends Container
         $base = env($key, $base);
 
         // Verificar se deve colocar a base
-        if (substr($base, 0, 1) == '/') {
+        if (substr($base, 0, 2) == './') {
             $base = $this->basePath . $base;
         }
 
