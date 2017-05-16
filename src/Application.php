@@ -261,8 +261,15 @@ class Application extends Container
         $key = sprintf('PATH_%s', strtoupper($type));
         $base = env($key, $base);
 
-        // Tratar path
-        $path = is_null($path) ? $type : $type . DIRECTORY_SEPARATOR . $path;
+        // Verificar se deve colocar a base
+        if (substr($base, 0, 1) == '/') {
+            $base = $this->basePath . $base;
+        }
+
+        // Verificar se deve adiconar type no path
+        if ($base == $this->basePath) {
+            $path = is_null($path) ? $type : $type . DIRECTORY_SEPARATOR . $path;
+        }
 
         // Retornar
         return is_null($path) ? $base : $base . DIRECTORY_SEPARATOR . $path;
