@@ -9,7 +9,6 @@ use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
 use Monolog\Formatter\LineFormatter;
 use Illuminate\Support\ServiceProvider;
-use Bugotech\Foundation\Console\Artisan;
 use Illuminate\Config\Repository as ConfigRepository;
 
 class Application extends Container
@@ -361,6 +360,8 @@ class Application extends Container
             'Illuminate\Contracts\Config\Repository' => 'config',
             'Illuminate\Contracts\Console\Kernel' => 'artisan',
             'Illuminate\Contracts\Events\Dispatcher' => 'events',
+            'Illuminate\Filesystem\Filesystem' => 'files',
+            'Bugotech\IO\Filesystem\Filesystem' => 'files',
             //'Illuminate\Database\ConnectionResolverInterface' => 'db',
             //'Illuminate\Database\DatabaseManager' => 'db',
             //'Illuminate\Contracts\Encryption\Encrypter' => 'encrypter',
