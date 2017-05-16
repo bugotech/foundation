@@ -326,7 +326,7 @@ class Application extends Container
     protected function registerContainerBase()
     {
         // Files
-        $this->register('\Bugotech\Foundation\IO\FilesystemServiceProvider');
+        $this->loadComponent('filesystems', '\Bugotech\Foundation\IO\FilesystemServiceProvider', 'filesystem');
 
         // Composer
         $this->singleton('composer', function ($app) {
