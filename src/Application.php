@@ -342,6 +342,14 @@ class Application extends Container
 
             return $artisan;
         });
+
+        // Cache
+        $this->singleton('cache', function () {
+            return $this->loadComponent('cache', 'Illuminate\Cache\CacheServiceProvider');
+        });
+        $this->singleton('cache.store', function () {
+            return $this->loadComponent('cache', 'Illuminate\Cache\CacheServiceProvider', 'cache.store');
+        });
     }
 
     /**
@@ -357,10 +365,10 @@ class Application extends Container
             'Illuminate\Container\Container' => 'app',
             'Illuminate\Contracts\Config\Repository' => 'config',
             'Illuminate\Contracts\Console\Kernel' => 'artisan',
+            'Illuminate\Contracts\Events\Dispatcher' => 'events',
             //'Illuminate\Database\ConnectionResolverInterface' => 'db',
             //'Illuminate\Database\DatabaseManager' => 'db',
             //'Illuminate\Contracts\Encryption\Encrypter' => 'encrypter',
-            //'Illuminate\Contracts\Events\Dispatcher' => 'events',
             //'Illuminate\Contracts\Hashing\Hasher' => 'hash',
             //'Illuminate\Contracts\Queue\Factory' => 'queue',
             //'Illuminate\Contracts\Queue\Queue' => 'queue.connection',

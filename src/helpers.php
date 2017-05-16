@@ -69,6 +69,19 @@ if (! function_exists('base_path')) {
     }
 }
 
+if (! function_exists('storage_path')) {
+    /**
+     * Get the path to the storage of the install.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function storage_path($path = '')
+    {
+        return app()->path('storage', $path);
+    }
+}
+
 if (! function_exists('config')) {
     /**
      * Get / set the specified configuration value.
@@ -108,5 +121,23 @@ if (! function_exists('logger')) {
         }
 
         return $log->error($error);
+    }
+}
+
+if (! function_exists('cache')) {
+    /**
+     * Return cache manager or store
+     * @param null|string $driver
+     * @return \Illuminate\Cache\CacheManager|\Illuminate\Contracts\Cache\Store
+     */
+    function cache($driver = null)
+    {
+        $cache = app('cache');
+
+        if (is_null($cache)) {
+            return $cache;
+        }
+
+        return $cache->driver($driver);
     }
 }
