@@ -1,0 +1,35 @@
+{
+    "name"       : "bugotech/foundation",
+    "description": "The Bugotech Foundation package.",
+    "homepage"   : "http://www.netforce.com.br",
+    "license"    : "GPL v.3",
+
+    "authors": [
+        {
+            "name" : "Bruno Gonçalves",
+            "email": "bugotech@gmail.com"
+        }
+    ],
+
+    "require": {
+        "php"                 : ">=5.5.9",
+        "vlucas/phpdotenv"    : "2.2.*",
+        "illuminate/console"  : "5.2.*",
+        "illuminate/config"   : "5.2.*",
+        "illuminate/container": "5.2.*",
+        "bugotech/support"    : "1.0.*"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Bugotech\\Foundation\\": "src/"
+        },
+
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+
+    "minimum-stability": "dev",
+    "prefer-stable"    : true
+}
