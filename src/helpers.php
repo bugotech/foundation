@@ -62,6 +62,27 @@ if (! function_exists('env')) {
     }
 }
 
+if (! function_exists('env_file_load')) {
+    /**
+     * Load file .env.
+     * @param $path
+     * @param string $file
+     * @return bool
+     */
+    function env_file_load($path, $file = '.env')
+    {
+        try {
+            $env = new \Dotenv\Dotenv($path, $file);
+            $env->load();
+
+            return true;
+        } catch (\Dotenv\Exception\InvalidPathException $e) {
+            return false;
+        }
+    }
+}
+
+
 if (! function_exists('base_path')) {
     /**
      * Get the path to the base of the install.
