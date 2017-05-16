@@ -336,12 +336,7 @@ class Application extends Container
         $this->register('\Illuminate\Events\EventServiceProvider');
 
         // Artisan - Console
-        $this->singleton('artisan', function ($app) {
-            $artisan = new Artisan($app, $app->make('events'), $app->version());
-            $artisan->resolveCommands([]);
-
-            return $artisan;
-        });
+        $this->register('\Bugotech\Foundation\Console\ConsoleServiceProvider');
 
         // Cache
         $this->singleton('cache', function () {
