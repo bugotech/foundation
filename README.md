@@ -1,1 +1,2 @@
-# foundation
+# Foundation
+Bugotech Foundation Components
