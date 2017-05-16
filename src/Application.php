@@ -279,25 +279,6 @@ class Application extends Container
     }
 
     /**
-     * Prepare the application to execute a console command.
-     *
-     * @param  bool  $aliases
-     * @return void
-     */
-    public function prepareForConsoleCommand($aliases = true)
-    {
-        //$this->withFacades($aliases);
-
-        //$this->make('cache');
-        //$this->make('queue');
-
-        //$this->configure('database');
-
-        //$this->register('Illuminate\Database\MigrationServiceProvider');
-        $this->register('NetForce\Framework\Console\ConsoleServiceProvider');
-    }
-
-    /**
      * Get the application namespace.
      *
      * @return string
