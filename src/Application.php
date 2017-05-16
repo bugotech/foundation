@@ -2,8 +2,8 @@
 
 use Monolog\Logger;
 use RuntimeException;
-use Illuminate\Support\Str;
 use Bugotech\IO\Filesystem;
+use Illuminate\Support\Str;
 use Illuminate\Support\Composer;
 use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
@@ -144,8 +144,6 @@ class Application extends Container
         if (method_exists($provider, 'boot')) {
             return $this->call([$provider, 'boot']);
         }
-
-        return null;
     }
 
     /**
@@ -203,15 +201,15 @@ class Application extends Container
 
             if (file_exists($appConfigDir)) {
                 return $appConfigDir;
-            } elseif (file_exists($path = __DIR__.'/../config/')) {
+            } elseif (file_exists($path = __DIR__ . '/../config/')) {
                 return $path;
             }
         } else {
-            $appConfigPath = $this->basePath('config').'/'.$name.'.php';
+            $appConfigPath = $this->basePath('config') . '/'.$name.'.php';
 
             if (file_exists($appConfigPath)) {
                 return $appConfigPath;
-            } elseif (file_exists($path = __DIR__.'/../config/'.$name.'.php')) {
+            } elseif (file_exists($path = __DIR__ . '/../config/'.$name.'.php')) {
                 return $path;
             }
         }
@@ -228,13 +226,13 @@ class Application extends Container
     public function basePath($path = null)
     {
         if (isset($this->basePath)) {
-            return $this->basePath.($path ? '/'.$path : $path);
+            return $this->basePath.($path ? '/' . $path : $path);
         }
 
         if ($this->runningInConsole()) {
             $this->basePath = getcwd();
         } else {
-            $this->basePath = realpath(getcwd().'/../');
+            $this->basePath = realpath(getcwd() . '/../');
         }
 
         return $this->basePath($path);
@@ -312,7 +310,7 @@ class Application extends Container
 
         foreach ((array) data_get($composer, 'autoload.psr-4') as $namespace => $path) {
             foreach ((array) $path as $pathChoice) {
-                if (realpath(app()->path('app')) == realpath(base_path().'/'.$pathChoice)) {
+                if (realpath(app()->path('app')) == realpath(base_path() . '/' . $pathChoice)) {
                     return $this->namespace = $namespace;
                 }
             }

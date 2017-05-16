@@ -65,7 +65,7 @@ if (! function_exists('base_path')) {
      */
     function base_path($path = '')
     {
-        return app()->basePath().($path ? '/'.$path : $path);
+        return app()->basePath() . ($path ? '/' . $path : $path);
     }
 }
 
@@ -126,7 +126,8 @@ if (! function_exists('logger')) {
 
 if (! function_exists('cache')) {
     /**
-     * Return cache manager or store
+     * Return cache manager or store.
+     *
      * @param null|string $driver
      * @return \Illuminate\Cache\CacheManager|\Illuminate\Contracts\Cache\Store
      */

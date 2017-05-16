@@ -53,7 +53,7 @@ class Env
 
             case 'null':
             case '(null)':
-                return null;
+                return;
         }
 
         if (Str::startsWith($value, '"') && Str::endsWith($value, '"')) {

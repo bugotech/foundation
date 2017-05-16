@@ -71,7 +71,7 @@ class Handler implements ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return null;
+        //..
     }
 
     /**
