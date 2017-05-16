@@ -1,14 +1,15 @@
 <?php namespace Bugotech\Foundation;
 
-use Bugotech\IO\Filesystem;
-use Illuminate\Support\Composer;
-use Monolog\Formatter\LineFormatter;
-use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use RuntimeException;
 use Illuminate\Support\Str;
+use Bugotech\IO\Filesystem;
+use Illuminate\Support\Composer;
+use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
+use Monolog\Formatter\LineFormatter;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Console\Application as Artisan;
 use Illuminate\Config\Repository as ConfigRepository;
 
 class Application extends Container
@@ -330,6 +331,14 @@ class Application extends Container
         $this->singleton('log', function () {
             return new Logger('netforce', [$this->getMonologHandler()]);
         });
+
+        // Artisan - Console
+        $this->singleton('artisan', function ($app) {
+            $artisan = new Artisan($app, $app->make('events'), $app->version());
+            $artisan->resolveCommands([]);
+
+            return $artisan;
+        });
     }
 
     /**
@@ -344,6 +353,7 @@ class Application extends Container
             'Illuminate\Contracts\Container\Container' => 'app',
             'Illuminate\Container\Container' => 'app',
             'Illuminate\Contracts\Config\Repository' => 'config',
+            'Illuminate\Contracts\Console\Kernel' => 'artisan',
             //'Illuminate\Database\ConnectionResolverInterface' => 'db',
             //'Illuminate\Database\DatabaseManager' => 'db',
             //'Illuminate\Contracts\Encryption\Encrypter' => 'encrypter',

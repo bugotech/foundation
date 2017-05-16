@@ -2,7 +2,6 @@
 
 use Exception;
 use RuntimeException;
-use Illuminate\Console\Application as Artisan;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Console\Kernel as KernelContract;
 
@@ -14,13 +13,6 @@ class Kernel implements KernelContract
      * @var \Illuminate\Contracts\Foundation\Application
      */
     protected $app;
-
-    /**
-     * The Artisan application instance.
-     *
-     * @var \Illuminate\Console\Application
-     */
-    protected $artisan;
 
     /**
      * Indicates if facade aliases are enabled for the console.
@@ -57,7 +49,7 @@ class Kernel implements KernelContract
     public function handle($input, $output = null)
     {
         try {
-            return $this->getArtisan()->run($input, $output);
+            return artisan()->run($input, $output);
         } catch (Exception $e) {
             $this->reportException($e);
 
@@ -76,7 +68,7 @@ class Kernel implements KernelContract
      */
     public function call($command, array $parameters = [])
     {
-        return $this->getArtisan()->call($command, $parameters);
+        return artisan()->call($command, $parameters);
     }
 
     /**
@@ -98,7 +90,7 @@ class Kernel implements KernelContract
      */
     public function all()
     {
-        return $this->getArtisan()->all();
+        return artisan()->all();
     }
 
     /**
@@ -108,22 +100,7 @@ class Kernel implements KernelContract
      */
     public function output()
     {
-        return $this->getArtisan()->output();
-    }
-
-    /**
-     * Get the Artisan application instance.
-     *
-     * @return \Illuminate\Console\Application
-     */
-    protected function getArtisan()
-    {
-        if (is_null($this->artisan)) {
-            return $this->artisan = (new Artisan($this->app, $this->app->make('events'), $this->app->version()))
-                                ->resolveCommands($this->getCommands());
-        }
-
-        return $this->artisan;
+        return artisan()->output();
     }
 
     /**
