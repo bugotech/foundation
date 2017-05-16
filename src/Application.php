@@ -2,6 +2,9 @@
 
 use Bugotech\IO\Filesystem;
 use Illuminate\Support\Composer;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 use RuntimeException;
 use Illuminate\Support\Str;
 use Illuminate\Container\Container;
@@ -238,6 +241,24 @@ class Application extends Container
     }
 
     /**
+     * Return path of type.
+     *
+     * @param $type
+     * @param null $path
+     * @return string
+     */
+    public function path($type, $path = null)
+    {
+        if (array_key_exists($type, $this->instances)) {
+            return $this->instances[$type];
+        }
+
+        $path = is_null($path) ? $type : $type . DIRECTORY_SEPARATOR . $path;
+
+        return $this->basePath($path);
+    }
+
+    /**
      * Determine if the application is running in the console.
      *
      * @return bool
@@ -293,7 +314,7 @@ class Application extends Container
 
         foreach ((array) data_get($composer, 'autoload.psr-4') as $namespace => $path) {
             foreach ((array) $path as $pathChoice) {
-                if (realpath(app()->path()) == realpath(base_path().'/'.$pathChoice)) {
+                if (realpath(app()->path('app')) == realpath(base_path().'/'.$pathChoice)) {
                     return $this->namespace = $namespace;
                 }
             }
@@ -323,6 +344,11 @@ class Application extends Container
         $this->singleton('config', function () {
             return new ConfigRepository();
         });
+
+        // Log
+        $this->singleton('log', function () {
+            return new Logger('netforce', [$this->getMonologHandler()]);
+        });
     }
 
     /**
@@ -349,5 +375,15 @@ class Application extends Container
             //'Illuminate\Contracts\Validation\Factory' => 'validator',
             //'Illuminate\Contracts\View\Factory' => 'view',
         ];
+    }
+
+    /**
+     * Get the Monolog handler for the application.
+     *
+     * @return \Monolog\Handler\AbstractHandler
+     */
+    protected function getMonologHandler()
+    {
+        return (new StreamHandler($this->path('storage', 'logs/netforce.log'), Logger::DEBUG))->setFormatter(new LineFormatter(null, null, true, true));
     }
 }
