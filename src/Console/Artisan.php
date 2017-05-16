@@ -1,7 +1,7 @@
 <?php namespace Bugotech\Foundation\Console;
 
 use Illuminate\Console\Application;
-use Illuminate\Contracts\Bus\Dispatcher;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Container\Container;
 
 class Artisan extends Application
