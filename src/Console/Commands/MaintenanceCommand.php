@@ -10,7 +10,7 @@ class MaintenanceCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'maintenance {opt : Option on or off }';
+    protected $signature = 'env {opt : Option on or off }';
 
     /**
      * The console command description.
@@ -51,7 +51,7 @@ class MaintenanceCommand extends Command
         $this->files->force($this->files->path($file));
 
         // Colocar em menutencao
-        if ($opt == 'on') {
+        if ($opt == 'off') {
             touch($file);
             $this->comment('Application is now in maintenance mode.');
         } else {
