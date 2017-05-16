@@ -358,7 +358,7 @@ class Application extends Container
         });
 
         // Database
-        $this->register('\Illuminate\Database\DatabaseServiceProvider');
+        $this->loadComponent('database', '\Illuminate\Database\DatabaseServiceProvider', 'db');
     }
 
     /**
