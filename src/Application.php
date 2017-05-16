@@ -1,5 +1,6 @@
 <?php namespace Bugotech\Foundation;
 
+use Dotenv\Dotenv;
 use RuntimeException;
 use Illuminate\Support\Str;
 use Illuminate\Container\Container;
@@ -320,5 +321,23 @@ class Application extends Container
             //'Illuminate\Contracts\Validation\Factory' => 'validator',
             //'Illuminate\Contracts\View\Factory' => 'view',
         ];
+    }
+
+    /**
+     * Carregar arquivo .env.
+     *
+     * @param string $file
+     * @return bool
+     */
+    public function loadEnvFile($file = '.env')
+    {
+        try {
+            $env = new Dotenv($this->basePath, $file);
+            $env->load();
+
+            return true;
+        } catch (\Dotenv\Exception\InvalidPathException $e) {
+            return false;
+        }
     }
 }
