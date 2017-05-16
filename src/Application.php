@@ -91,7 +91,7 @@ class Application extends Container
      */
     public function isDownForMaintenance()
     {
-        return false;
+        return file_exists(storage_path('/framework/.maintenance'));
     }
 
     /**
