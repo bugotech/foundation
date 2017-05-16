@@ -2,7 +2,7 @@
 
 use Exception;
 use RuntimeException;
-use Illuminate\Contracts\Foundation\Application;
+use Bugotech\Foundation\Application;
 use Illuminate\Contracts\Console\Kernel as KernelContract;
 
 class Kernel implements KernelContract
@@ -10,7 +10,7 @@ class Kernel implements KernelContract
     /**
      * The application implementation.
      *
-     * @var \Illuminate\Contracts\Foundation\Application
+     * @var \Bugotech\Foundation\Application
      */
     protected $app;
 
