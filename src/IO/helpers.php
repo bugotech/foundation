@@ -3,7 +3,7 @@
 if (! function_exists('files')) {
 
     /**
-     * Files
+     * Files.
      * @return \Bugotech\IO\Filesystem
      */
     function files()
@@ -15,6 +15,8 @@ if (! function_exists('files')) {
 if (! function_exists('storage')) {
 
     /**
+     * Storage with mult-drives.
+     *
      * @param null|string $drive
      * @return Illuminate\Filesystem\FilesystemManager|\Illuminate\Contracts\Filesystem\Filesystem
      */
