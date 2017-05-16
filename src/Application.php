@@ -263,7 +263,7 @@ class Application extends Container
 
         // Verificar se deve colocar a base
         if (substr($base, 0, 2) == './') {
-            $base = $this->basePath . $base;
+            $base = $this->basePath . DIRECTORY_SEPARATOR . substr($base, 2);
         }
 
         // Verificar se deve adiconar type no path
