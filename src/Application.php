@@ -64,7 +64,7 @@ class Application extends Container
      */
     public function version()
     {
-        return 'NetForce (5.4)';
+        return 'NetForce (5.2)';
     }
 
     /**
