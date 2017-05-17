@@ -283,6 +283,16 @@ class Application extends Container
     }
 
     /**
+     * Determine if the application is running in the phar.
+     *
+     * @return bool
+     */
+    public function runningInPhar()
+    {
+        return ('phar:' !== strtolower(substr(__FILE__, 0, 5)));
+    }
+
+    /**
      * Determine if we are running unit tests.
      *
      * @return bool
