@@ -289,7 +289,7 @@ class Application extends Container
      */
     public function runningInPhar()
     {
-        return 'phar:' !== strtolower(substr(__FILE__, 0, 5));
+        return 'phar:' === strtolower(substr(__FILE__, 0, 5));
     }
 
     /**
