@@ -28,9 +28,8 @@ class ConsoleServiceProvider extends ServiceProvider
     {
         $this->app->singleton('artisan', function ($app) {
             $artisan = new Artisan($app, $app->make('events'), $app->version());
-            if (! $this->app->runningInPhar()) {
-                $artisan->resolveCommands($this->commands);
-            }
+            $commands = $this->app->runningInPhar() ? [] : $this->commands;
+            $artisan->resolveCommands($commands);
 
             return $artisan;
         });
