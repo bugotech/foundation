@@ -254,9 +254,9 @@ class Application extends Container
             $base = $this->instances[$instance];
         }
 
-        // Verificar se foi implementado em PATH_ no env
-        $key = sprintf('PATH_%s', strtoupper($type));
-        $base = env($key, $base);
+        // Verificar se foi implementado em config
+        $key = sprintf('paths.$s', strtolower($type));
+        $base = config($key, $base);
 
         // Verificar se deve colocar a base
         if (substr($base, 0, 2) == './') {
