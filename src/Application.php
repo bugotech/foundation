@@ -256,7 +256,7 @@ class Application extends Container
         }
 
         // Verificar se foi implementado em config
-        $key = sprintf('paths.$s', strtolower($type));
+        $key = sprintf('paths.%s', strtolower($type));
         $base = config($key, $base);
 
         // Verificar se deve colocar a base
