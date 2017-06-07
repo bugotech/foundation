@@ -273,6 +273,16 @@ class Application extends Container
     }
 
     /**
+     * Alias para path('database').
+     * @param null|string $path
+     * @return string
+     */
+    public function databasePath($path = null)
+    {
+        return $this->path('database', $path);
+    }
+
+    /**
      * Determine if the application is running in the console.
      *
      * @return bool
