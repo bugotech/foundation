@@ -81,6 +81,7 @@ class Application extends Container
         $this->registerContainerAliases();
 
         $this->configure('app');
+        $this->configure('paths');
     }
 
     /**
