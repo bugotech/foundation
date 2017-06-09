@@ -142,3 +142,43 @@ if (! function_exists('cache')) {
         return $cache->driver($driver);
     }
 }
+
+if (! function_exists('validator')) {
+    /**
+     * Estrutura de validação.
+     * @param  array  $data
+     * @param  array  $rules
+     * @param  array  $messages
+     * @param  array  $customAttributes
+     * @return \Illuminate\Validation\Factory|\Illuminate\Validation\Validator
+     */
+    function validator($data = null, array $rules = [], array $messages = [], array $customAttributes = [])
+    {
+        $validator = app('validator');
+
+        if (is_null($data)) {
+            return $validator;
+        }
+
+        return $validator->make($data, $rules, $messages, $customAttributes);
+    }
+}
+
+if (! function_exists('trans')) {
+    /**
+     * Translate the given message.
+     *
+     * @param  string  $id
+     * @param  array   $replace
+     * @param  string  $locale
+     * @return \Symfony\Component\Translation\TranslatorInterface|string
+     */
+    function trans($id = null, $replace = [], $locale = null)
+    {
+        if (is_null($id)) {
+            return app('translator');
+        }
+
+        return app('translator')->trans($id, $replace, 'messages', $locale);
+    }
+}

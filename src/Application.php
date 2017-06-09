@@ -8,10 +8,15 @@ use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
 use Monolog\Formatter\LineFormatter;
 use Illuminate\Support\ServiceProvider;
+use Bugotech\Foundation\Binders\ValidatorBinder;
+use Bugotech\Foundation\Binders\TranslatorBinder;
 use Illuminate\Config\Repository as ConfigRepository;
 
 class Application extends Container
 {
+    use ValidatorBinder;
+    use TranslatorBinder;
+
     /**
      * The base path of the application installation.
      *
@@ -39,6 +44,18 @@ class Application extends Container
      * @var string
      */
     protected $namespace;
+
+    /**
+     * Lista de Bindings disponivel para inciar a aplicação.
+     * @var array
+     */
+    protected $availableBindings = [];
+
+    /**
+     * Lista de Binders carregados.
+     * @var array
+     */
+    protected $ranServiceBinders = [];
 
     /**
      * Create a new Lumen application instance.
@@ -77,11 +94,32 @@ class Application extends Container
         $this->instance('app', $this);
         $this->instance('Bugotech\Foundation\Application', $this);
 
-        $this->registerContainerBase();
         $this->registerContainerAliases();
+        $this->registerBinders();
+        $this->registerContainerBase();
 
         $this->configure('app');
         $this->configure('paths');
+    }
+
+    /**
+     * Resolve the given type from the container.
+     *
+     * @param  string  $abstract
+     * @return mixed
+     */
+    public function make($abstract, array $parameters = [])
+    {
+        $abstract = $this->getAlias($abstract);
+
+        if (array_key_exists($abstract, $this->availableBindings) &&
+            ! array_key_exists($this->availableBindings[$abstract], $this->ranServiceBinders)) {
+            $this->{$method = $this->availableBindings[$abstract]}($parameters);
+
+            $this->ranServiceBinders[$method] = true;
+        }
+
+        return parent::make($abstract, $parameters);
     }
 
     /**
@@ -398,6 +436,17 @@ class Application extends Container
             //'Laravel\Lumen\Routing\UrlGenerator' => 'url',
             //'Illuminate\Contracts\Validation\Factory' => 'validator',
             //'Illuminate\Contracts\View\Factory' => 'view',
+        ];
+    }
+
+    /**
+     * Registrar Binders.
+     */
+    protected function registerBinders()
+    {
+        $this->availableBindings = [
+            'validator' => 'registerBinderValidator',
+            'translator' => 'registerBinderTranslator',
         ];
     }
 
