@@ -62,7 +62,7 @@ trait ValidatorModel
         $rules = $this->getRules($values);
 
         // Processar regras
-        $validator = app('validator')->make($values, $rules);
+        $validator = validator()->make($values, $rules);
         if ($validator->fails()) {
             $messages = $validator->messages();
             $items = $messages->toArray();
