@@ -7,5 +7,7 @@ class Model extends Eloquent
     use CastModel;
     use ValidatorModel;
 
+    public $porInquilino = false;
+
     public $timestamps = false;
 }
