@@ -1,7 +1,6 @@
 <?php namespace Bugotech\Foundation\Database;
 
 use Bugotech\Foundation\Support\Validates;
-use Bugotech\Foundation\Support\ExceptionAttrs;
 
 trait ValidatorModel
 {

@@ -2,7 +2,6 @@
 
 use Bugotech\Foundation\Support\Validates;
 use Bugotech\Foundation\Support\Attributes;
-use Bugotech\Foundation\Support\ExceptionAttrs;
 
 abstract class CommandModel extends Attributes
 {
@@ -12,7 +11,7 @@ abstract class CommandModel extends Attributes
      * Processo a ser executado do comando.
      * @return void
      */
-    protected abstract function handle();
+    abstract protected function handle();
 
     /**
      * Execute command.

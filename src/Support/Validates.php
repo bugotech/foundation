@@ -1,7 +1,5 @@
 <?php namespace Bugotech\Foundation\Support;
 
-use Bugotech\Foundation\Support\ExceptionAttrs;
-
 trait Validates
 {
     public $validates = [];
