@@ -235,7 +235,7 @@ class Application extends Container
     public function getConfigurationPath($name = null)
     {
         if (! $name) {
-            $appConfigDir = $this->basePath('config') . '/';
+            $appConfigDir = base_path('config') . '/';
 
             if (file_exists($appConfigDir)) {
                 return $appConfigDir;
@@ -243,7 +243,7 @@ class Application extends Container
                 return $path;
             }
         } else {
-            $appConfigPath = $this->basePath('config') . '/' . $name . '.php';
+            $appConfigPath = base_path('config') . '/' . $name . '.php';
 
             if (file_exists($appConfigPath)) {
                 return $appConfigPath;
