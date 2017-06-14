@@ -65,6 +65,11 @@ if (! function_exists('base_path')) {
      */
     function base_path($path = '')
     {
+        // Verificar se esta sendo executado em um PHAR.
+        if (app()->runningInPhar() && function_exists('bin_path')) {
+            return bin_path($path);
+        }
+
         return app()->basePath() . ($path ? '/' . $path : $path);
     }
 }
