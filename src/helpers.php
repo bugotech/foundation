@@ -87,6 +87,19 @@ if (! function_exists('storage_path')) {
     }
 }
 
+if (! function_exists('app_path')) {
+    /**
+     * Get the path to the application of the install.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function app_path($path = '')
+    {
+        return app()->path('app', $path);
+    }
+}
+
 if (! function_exists('config')) {
     /**
      * Get / set the specified configuration value.
