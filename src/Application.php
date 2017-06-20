@@ -15,7 +15,7 @@ use Illuminate\Config\Repository as ConfigRepository;
 class Application extends Container
 {
     use ValidatorBinder;
-    use TranslatorBinder;
+    //use TranslatorBinder;
 
     /**
      * The base path of the application installation.
@@ -448,7 +448,7 @@ class Application extends Container
     {
         $this->availableBindings = [
             'validator' => 'registerBinderValidator',
-            'translator' => 'registerBinderTranslator',
+            //'translator' => 'registerBinderTranslator',
         ];
     }
 
