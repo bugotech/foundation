@@ -219,7 +219,7 @@ class Application extends Container
         $this->loadedConfigurations[$name] = true;
 
         $path = $this->getConfigurationPath($name);
-        $path = is_null($path) ? $pathDeault : $path;
+        $path = (is_null($path) || ($path == '')) ? $pathDeault : $path;
 
         if ($path) {
             $this->make('config')->set($name, require $path);
@@ -254,7 +254,7 @@ class Application extends Container
             }
         }
 
-        return null;
+        return '';
     }
 
     /**
