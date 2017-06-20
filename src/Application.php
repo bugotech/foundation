@@ -210,7 +210,7 @@ class Application extends Container
      * @param  string  $pathDeault
      * @return void
      */
-    public function configure($name, $pathDeault = null)
+    public function configure($name, $pathDeault = '')
     {
         if (isset($this->loadedConfigurations[$name])) {
             return;
@@ -254,7 +254,7 @@ class Application extends Container
             }
         }
 
-        return '';
+        return null;
     }
 
     /**
