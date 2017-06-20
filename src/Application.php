@@ -207,10 +207,10 @@ class Application extends Container
      * Load a configuration file into the application.
      *
      * @param  string  $name
-     * @param  string  $path
+     * @param  string  $pathDeault
      * @return void
      */
-    public function configure($name, $path = null)
+    public function configure($name, $pathDeault = null)
     {
         if (isset($this->loadedConfigurations[$name])) {
             return;
@@ -218,7 +218,8 @@ class Application extends Container
 
         $this->loadedConfigurations[$name] = true;
 
-        $path = is_null($path) ? $this->getConfigurationPath($name) : $path;
+        $path = $this->getConfigurationPath($name);
+        $path = is_null($path) ? $pathDeault : $path;
 
         if ($path) {
             $this->make('config')->set($name, require $path);
