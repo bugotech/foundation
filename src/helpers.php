@@ -181,22 +181,3 @@ if (! function_exists('validator')) {
         return $validator->make($data, $rules, $messages, $customAttributes);
     }
 }
-
-if (! function_exists('trans')) {
-    /**
-     * Translate the given message.
-     *
-     * @param  string  $id
-     * @param  array   $replace
-     * @param  string  $locale
-     * @return \Symfony\Component\Translation\TranslatorInterface|string
-     */
-    function trans($id = null, $replace = [], $locale = null)
-    {
-        if (is_null($id)) {
-            return app('translator');
-        }
-
-        return app('translator')->trans($id, $replace, 'messages', $locale);
-    }
-}
