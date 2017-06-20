@@ -9,13 +9,11 @@ use Illuminate\Container\Container;
 use Monolog\Formatter\LineFormatter;
 use Illuminate\Support\ServiceProvider;
 use Bugotech\Foundation\Binders\ValidatorBinder;
-use Bugotech\Foundation\Binders\TranslatorBinder;
 use Illuminate\Config\Repository as ConfigRepository;
 
 class Application extends Container
 {
     use ValidatorBinder;
-    //use TranslatorBinder;
 
     /**
      * The base path of the application installation.
@@ -448,7 +446,6 @@ class Application extends Container
     {
         $this->availableBindings = [
             'validator' => 'registerBinderValidator',
-            //'translator' => 'registerBinderTranslator',
         ];
     }
 
