@@ -433,9 +433,7 @@ class Application extends Container
             //'Illuminate\Contracts\Queue\Factory' => 'queue',
             //'Illuminate\Contracts\Queue\Queue' => 'queue.connection',
             'request' => 'Illuminate\Http\Request',
-            //'Laravel\Lumen\Routing\UrlGenerator' => 'url',
             //'Illuminate\Contracts\Validation\Factory' => 'validator',
-            'Illuminate\Contracts\View\Factory' => 'view',
         ];
     }
 
