@@ -13,7 +13,7 @@ class TenantScope implements \Illuminate\Database\Eloquent\Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $inquilino_id = 0;
+        $inquilino_id = auth()::user()->inquilino_id;
 
         $builder->where('inquilino_id', $inquilino_id);
     }

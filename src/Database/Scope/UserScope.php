@@ -13,7 +13,7 @@ class UserScope implements \Illuminate\Database\Eloquent\Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $usuario_id = 0;
+        $usuario_id = auth()->id();
 
         $builder->where('usuario_id', $usuario_id);
     }

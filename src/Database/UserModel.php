@@ -22,12 +22,12 @@ trait UserModel
             }
 
             // Verificar se usuário esta logado
-            if (\Auth::check() != true) {
+            if (auth()::check() != true) {
                 error('Usuário não esta logado');
             }
 
             // Setar inquilino
-            $model->usuario_id = \Auth::user()->id;
+            $model->usuario_id = auth()::user()->id;
         });
     }
 }
