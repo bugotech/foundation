@@ -408,6 +408,9 @@ class Application extends Container
 
         // Database
         $this->loadComponent('database', '\Illuminate\Database\DatabaseServiceProvider', 'db');
+
+        // Hash
+        $this->register('\Illuminate\Hashing\HashServiceProvider');
     }
 
     /**
