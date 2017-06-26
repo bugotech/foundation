@@ -91,7 +91,6 @@ class Application extends Container
 
         $this->instance('app', $this);
         $this->instance('Bugotech\Foundation\Application', $this);
-        $this->addContextualBinding('app', 'Illuminate\Contracts\Foundation\Application', 'Bugotech\Foundation\Application');
 
         $this->registerContainerAliases();
         $this->registerBinders();
