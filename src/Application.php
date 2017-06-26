@@ -434,12 +434,12 @@ class Application extends Container
             'Bugotech\IO\Filesystem\Filesystem' => 'files',
             //'Illuminate\Database\ConnectionResolverInterface' => 'db',
             //'Illuminate\Database\DatabaseManager' => 'db',
-            //'Illuminate\Contracts\Encryption\Encrypter' => 'encrypter',
-            //'Illuminate\Contracts\Hashing\Hasher' => 'hash',
+            'Illuminate\Contracts\Encryption\Encrypter' => 'encrypter',
+            'Illuminate\Contracts\Hashing\Hasher' => 'hash',
             //'Illuminate\Contracts\Queue\Factory' => 'queue',
             //'Illuminate\Contracts\Queue\Queue' => 'queue.connection',
             'request' => 'Illuminate\Http\Request',
-            //'Illuminate\Contracts\Validation\Factory' => 'validator',
+            'Illuminate\Contracts\Validation\Factory' => 'validator',
         ];
     }
 
