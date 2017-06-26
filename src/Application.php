@@ -425,6 +425,7 @@ class Application extends Container
     {
         $this->aliases = [
             'Illuminate\Contracts\Foundation\Application' => 'app',
+            'Illuminate\Foundation\Application' => 'app',
             'Illuminate\Contracts\Container\Container' => 'app',
             'Illuminate\Container\Container' => 'app',
             'Illuminate\Contracts\Config\Repository' => 'config',
