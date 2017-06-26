@@ -181,3 +181,29 @@ if (! function_exists('validator')) {
         return $validator->make($data, $rules, $messages, $customAttributes);
     }
 }
+
+if (! function_exists('encrypt')) {
+    /**
+     * Encrypt the given value.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    function encrypt($value)
+    {
+        return app('encrypter')->encrypt($value);
+    }
+}
+
+if (! function_exists('decrypt')) {
+    /**
+     * Decrypt the given value.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    function decrypt($value)
+    {
+        return app('encrypter')->decrypt($value);
+    }
+}

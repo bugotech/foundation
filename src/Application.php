@@ -411,6 +411,9 @@ class Application extends Container
 
         // Hash
         $this->register('\Illuminate\Hashing\HashServiceProvider');
+
+        // Encryption
+        $this->register('\Illuminate\Encryption\EncryptionServiceProvider');
     }
 
     /**
