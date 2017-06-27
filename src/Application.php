@@ -438,7 +438,7 @@ class Application extends Container
             'Illuminate\Contracts\Hashing\Hasher' => 'hash',
             //'Illuminate\Contracts\Queue\Factory' => 'queue',
             //'Illuminate\Contracts\Queue\Queue' => 'queue.connection',
-            'request' => 'Illuminate\Http\Request',
+            //'request' => 'Illuminate\Http\Request',
             'Illuminate\Contracts\Validation\Factory' => 'validator',
         ];
     }
