@@ -25,6 +25,7 @@
         "illuminate/validation"  : "5.2.*",
         "illuminate/hashing"     : "5.2.*",
         "illuminate/encryption"  : "5.2.*",
+        "illuminate/queue"       : "5.2.*",
         "bugotech/support"       : "1.0.*",
         "bugotech/io"            : "1.0.*"
     },

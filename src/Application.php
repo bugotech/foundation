@@ -414,6 +414,9 @@ class Application extends Container
 
         // Encryption
         $this->register('\Illuminate\Encryption\EncryptionServiceProvider');
+
+        // Queue
+        $this->loadComponent('queue', '\Illuminate\Queue\QueueServiceProvider', 'queue');
     }
 
     /**
