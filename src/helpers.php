@@ -220,7 +220,7 @@ if (! function_exists('hasher')) {
      */
     function hasher($value = null, array $options = [])
     {
-        if (! is_null($value)) {
+        if (is_null($value)) {
             return app('hash');
         }
 
