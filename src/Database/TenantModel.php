@@ -1,6 +1,6 @@
 <?php namespace Bugotech\Foundation\Database;
 
-use Bugotech\Foundation\Database\Scopes\TenantScope;
+use Bugotech\Foundation\Database\Scope\TenantScope;
 
 trait TenantModel
 {

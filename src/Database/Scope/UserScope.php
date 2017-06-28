@@ -1,4 +1,4 @@
-<?php namespace Bugotech\Foundation\Database\Scopes;
+<?php namespace Bugotech\Foundation\Database\Scope;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;

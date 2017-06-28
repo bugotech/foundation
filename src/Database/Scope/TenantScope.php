@@ -1,4 +1,4 @@
-<?php namespace Bugotech\Foundation\Database\Scopes;
+<?php namespace Bugotech\Foundation\Database\Scope;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -13,7 +13,7 @@ class TenantScope implements \Illuminate\Database\Eloquent\Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $inquilino_id = auth()::user()->inquilino_id;
+        $inquilino_id = auth()->user()->inquilino_id;
 
         $builder->where('inquilino_id', $inquilino_id);
     }

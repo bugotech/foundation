@@ -1,6 +1,6 @@
 <?php namespace Bugotech\Foundation\Database;
 
-use Bugotech\Foundation\Database\Scopes\UserScope;
+use Bugotech\Foundation\Database\Scope\UserScope;
 
 trait UserModel
 {
