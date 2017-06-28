@@ -1,4 +1,4 @@
-<?php namespace Bugotech\Database\Models;
+<?php namespace Bugotech\Foundation\Database;
 
 use Bugotech\Foundation\Database\Scopes\TenantScope;
 
