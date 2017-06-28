@@ -13,21 +13,8 @@ class TenantScope implements \Illuminate\Database\Eloquent\Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $inquilino_id = $this->getInquilinoId();
+        $inquilino_id = tenant()->getId();
 
         $builder->where('inquilino_id', $inquilino_id);
-    }
-
-    /**
-     * Retorna o ID do inquilino.
-     * @return int
-     */
-    protected function getInquilinoId()
-    {
-        if (auth()->check()) {
-            return auth()->user()->inquilino_id;
-        }
-
-        return tenant()->getId();
     }
 }
