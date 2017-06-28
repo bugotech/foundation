@@ -207,3 +207,23 @@ if (! function_exists('decrypt')) {
         return app('encrypter')->decrypt($value);
     }
 }
+
+if (! function_exists('hasher')) {
+    /**
+     * Hash the given value.
+     *
+     * @param  string  $value
+     * @param  array   $options
+     * @return string|\Illuminate\Contracts\Hashing\Hasher
+     *
+     * @throws \RuntimeException
+     */
+    function hasher($value = null, array $options = [])
+    {
+        if (! is_null($value)) {
+            return app('hash');
+        }
+
+        return app('hash')->make($value, $options);
+    }
+}
