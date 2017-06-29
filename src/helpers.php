@@ -163,7 +163,7 @@ if (! function_exists('cache')) {
 
 if (! function_exists('validator')) {
     /**
-     * Estrutura de validação.
+     * Estrutura de validaÃ§Ã£o.
      * @param  array  $data
      * @param  array  $rules
      * @param  array  $messages
