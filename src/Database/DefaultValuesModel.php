@@ -38,9 +38,7 @@ trait DefaultValuesModel
      */
     protected function resolveValue($value)
     {
-        $code = '$value = %s;';
-        $value = is_string($value) ? sprintf('"%s"', $value) : $value;
-        $code = sprintf($code, $value);
+        $code = sprintf('$value = %s;', $value);
 
         // Executar codigo
         eval($code);
