@@ -27,7 +27,7 @@ trait Validates
             $messages = $validator->messages();
             $items = $messages->toArray();
 
-            throw new ExceptionAttrs(trans('Error validating fields.'), 0, $items);
+            throw new ExceptionAttrs(trans('validation.erros.attributes'), 0, $items);
         }
 
         return true;
