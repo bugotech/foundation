@@ -51,7 +51,6 @@ class ExceptionAttrs extends Exception
      *
      * @param $message
      * @param $attrs
-     *
      * @return string
      */
     protected static function makeMsgs($message, $attrs)
