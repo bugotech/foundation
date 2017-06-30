@@ -5,7 +5,8 @@ trait MutatorModel
     public $charcases = [];
 
     /**
-     * Tratar valores
+     * Tratar valores.
+     *
      * @param $key
      * @param $value
      * @return mixed
