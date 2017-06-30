@@ -27,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(DispatcherContract $events)
     {
+        // Carregar configurações
+        $this->app->configure('events');
+
         foreach ($this->listens() as $event => $listeners) {
             foreach ($listeners as $listener) {
                 $events->listen($event, $listener);
