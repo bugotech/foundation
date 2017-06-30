@@ -54,7 +54,7 @@ class EventServiceProvider extends ServiceProvider
     public function listens()
     {
         $listen = config('events.listen', []);
-        $listen = array_key_exists([], $this->listen, $listen);
+        $listen = array_merge([], $this->listen, $listen);
 
         return $listen;
     }
@@ -67,7 +67,7 @@ class EventServiceProvider extends ServiceProvider
     public function subscribes()
     {
         $subscribe = config('events.subscribes', []);
-        $subscribe = array_key_exists([], $this->subscribe, $subscribe);
+        $subscribe = array_merge([], $this->subscribe, $subscribe);
 
         return $subscribe;
     }
