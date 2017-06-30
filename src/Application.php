@@ -394,6 +394,7 @@ class Application extends Container
 
         // Events
         $this->register('\Illuminate\Events\EventServiceProvider');
+        $this->register('\Bugotech\Foundation\Events\EventServiceProvider');
 
         // Artisan - Console
         $this->register('\Bugotech\Foundation\Console\ConsoleServiceProvider');
