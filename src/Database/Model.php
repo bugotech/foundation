@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 class Model extends Eloquent
 {
     use CastModel;
+    use MutatorModel;
     use ValidatorModel;
     use DefaultValuesModel;
 
@@ -47,5 +48,21 @@ class Model extends Eloquent
     public static function loaded($callback, $priority = 0)
     {
         static::registerModelEvent('loaded', $callback, $priority);
+    }
+
+    /**
+     * Set a given attribute on the model.
+     *
+     * @param  string  $key
+     * @param  mixed  $value
+     * @return $this
+     */
+    public function setAttribute($key, $value)
+    {
+        // Tratar manipulaçãoes gerais
+        $value = $this->resolveMutator($key, $value);
+
+        // Atribuir valores
+        return parent::setAttribute($key, $value);
     }
 }
