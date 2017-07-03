@@ -8,13 +8,10 @@ use Monolog\Handler\StreamHandler;
 use Illuminate\Container\Container;
 use Monolog\Formatter\LineFormatter;
 use Illuminate\Support\ServiceProvider;
-use Bugotech\Foundation\Binders\ValidatorBinder;
 use Illuminate\Config\Repository as ConfigRepository;
 
 class Application extends Container
 {
-    use ValidatorBinder;
-
     /**
      * The base path of the application installation.
      *
@@ -443,7 +440,6 @@ class Application extends Container
             //'Illuminate\Contracts\Queue\Factory' => 'queue',
             //'Illuminate\Contracts\Queue\Queue' => 'queue.connection',
             //'request' => 'Illuminate\Http\Request',
-            'Illuminate\Contracts\Validation\Factory' => 'validator',
         ];
     }
 
@@ -453,7 +449,7 @@ class Application extends Container
     protected function registerBinders()
     {
         $this->availableBindings = [
-            'validator' => 'registerBinderValidator',
+            //'validator' => 'registerBinderValidator',
         ];
     }
 
