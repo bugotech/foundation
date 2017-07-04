@@ -404,9 +404,6 @@ class Application extends Container
             return $this->loadComponent('cache', 'Illuminate\Cache\CacheServiceProvider', 'cache.store');
         });
 
-        // Database
-        $this->loadComponent('database', '\Illuminate\Database\DatabaseServiceProvider', 'db');
-
         // Hash
         $this->register('\Illuminate\Hashing\HashServiceProvider');
 
@@ -433,13 +430,10 @@ class Application extends Container
             'Illuminate\Contracts\Events\Dispatcher' => 'events',
             'Illuminate\Filesystem\Filesystem' => 'files',
             'Bugotech\IO\Filesystem\Filesystem' => 'files',
-            //'Illuminate\Database\ConnectionResolverInterface' => 'db',
-            //'Illuminate\Database\DatabaseManager' => 'db',
             'Illuminate\Contracts\Encryption\Encrypter' => 'encrypter',
             'Illuminate\Contracts\Hashing\Hasher' => 'hash',
             //'Illuminate\Contracts\Queue\Factory' => 'queue',
             //'Illuminate\Contracts\Queue\Queue' => 'queue.connection',
-            //'request' => 'Illuminate\Http\Request',
         ];
     }
 
