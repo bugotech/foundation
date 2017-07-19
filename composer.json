@@ -20,10 +20,9 @@
         "illuminate/console"     : "5.2.*",
         "illuminate/config"      : "5.2.*",
         "illuminate/container"   : "5.2.*",
-        "illuminate/events"      : "5.2.*",
         "illuminate/hashing"     : "5.2.*",
         "illuminate/encryption"  : "5.2.*",
-        "illuminate/queue"       : "5.2.*",
+        "bugotech/events"        : "dev-master",
         "bugotech/support"       : "1.0.*",
         "bugotech/io"            : "1.0.*",
         "bugotech/validator"     : "dev-master"

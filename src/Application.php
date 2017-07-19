@@ -389,10 +389,6 @@ class Application extends Container
             return new Logger('netforce', [$this->getMonologHandler()]);
         });
 
-        // Events
-        $this->register('\Illuminate\Events\EventServiceProvider');
-        $this->register('\Bugotech\Foundation\Events\EventServiceProvider');
-
         // Artisan - Console
         $this->register('\Bugotech\Foundation\Console\ConsoleServiceProvider');
 
@@ -427,13 +423,10 @@ class Application extends Container
             'Illuminate\Container\Container' => 'app',
             'Illuminate\Contracts\Config\Repository' => 'config',
             'Illuminate\Contracts\Console\Kernel' => 'artisan',
-            'Illuminate\Contracts\Events\Dispatcher' => 'events',
             'Illuminate\Filesystem\Filesystem' => 'files',
             'Bugotech\IO\Filesystem\Filesystem' => 'files',
             'Illuminate\Contracts\Encryption\Encrypter' => 'encrypter',
             'Illuminate\Contracts\Hashing\Hasher' => 'hash',
-            //'Illuminate\Contracts\Queue\Factory' => 'queue',
-            //'Illuminate\Contracts\Queue\Queue' => 'queue.connection',
         ];
     }
 
